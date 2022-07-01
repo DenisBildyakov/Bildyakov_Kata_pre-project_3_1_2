@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td><h1>Edit User</h1></td>
+    </tr>
+    <tr>
+        <td><form th:method="PUT" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+
+            <label for="firstName">Enter name</label>
+            <input type="text" th:field="${user.firstName}" id="firstName">
+            <br/>
+            <br/>
+
+            <label for="lastName">Enter Last Name</label>
+            <input type="text" th:field="${user.lastName}" id="lastName">
+            <br/>
+            <br/>
+
+            <label for="age">Enter age</label>
+            <input type="text" th:field="${user.age}" id="age">
+            <br/>
+            <br/>
+
+            <label for="Username">Enter Username</label>
+            <input type="text" th:field="${user.username}" id="Username">
+            <br/>
+            <br/>
+
+            <label for="Password">Enter Password</label>
+            <input type="text" th:field="${user.password}" id="Password">
+            <br/>
+            <br/>
+
+            <label>Check role:
+                <input type="checkbox" name="checked"
+                       th:each="role : ${rol}"
+                       th:text="${role.getName()}"
+                       th:value="${role.getId()}"
+                       th:selected="${user.getAuthorities().contains(role)}">
+            </label>
+
+            <input type="submit" value="UPDATE"/>
+
+        </form></td>
+    </tr>
+</table>
+
+</body>
+</html>
