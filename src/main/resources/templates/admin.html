@@ -40,7 +40,13 @@
                 <input type="submit" value="DELETE"/>
             </form>
         </td>
-    </tr>
+    </tr>    <tr>
+    <td colspan="8" style="text-align: center">
+        <form th:method="GET" th:action="@{/user}">
+            <input type="submit" value="SHOW USER INFO"/>
+        </form>
+    </td>
+</tr>
     <tr>
         <td colspan="8" style="text-align: center">
             <form th:method="GET" th:action="@{/admin/addUser}">

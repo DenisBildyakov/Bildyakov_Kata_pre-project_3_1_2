@@ -1,7 +1,7 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.kata.spring.boot_security.demo.model.Role;
@@ -16,10 +16,12 @@ import java.util.List;
 public class IndexController {
 
     private final UserService userService;
+    private PasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public IndexController(UserService userService) {
+    public IndexController(UserService userService, PasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping(value ="/")
@@ -27,7 +29,6 @@ public class IndexController {
         List<User> users = userService.findAllUsers();
 
         if (users.isEmpty()) {
-            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             Role admin = new Role("ROLE_ADMIN");
             Role user = new Role("ROLE_USER");
             Collection<Role> adminRole = new HashSet<>();

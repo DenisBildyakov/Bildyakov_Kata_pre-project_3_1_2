@@ -39,13 +39,16 @@
             <br/>
             <br/>
 
-            <label>Check role:
-                <input type="checkbox" name="checked"
-                       th:each="role : ${rol}"
-                       th:text="${role.getName()}"
-                       th:value="${role.getId()}"
-                       th:selected="${user.getAuthorities().contains(role)}">
-            </label>
+            <table style="border: 0px; width: 100px;">
+            <tr th:each="role:${roles}" style="border: 0px;">
+                <td style="border: 0px;">
+                    <label th:text="${role.getRole()}"></label>
+                </td>
+                <td style="border: 0px;">
+                    <input type="checkbox" th:field="${user.roles}" th:value="${role.getId()}"/>
+                </td>
+            </tr>
+        </table>
 
             <input type="submit" value="UPDATE"/>
 

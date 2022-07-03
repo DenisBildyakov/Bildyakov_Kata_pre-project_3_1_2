@@ -6,5 +6,12 @@
 </head>
 <body>
 
+<form th:action="@{/login}" th:object="${user}">
+    <input type="submit" value="LOG IN"/>
+</form>
+<br><br>
+<form th:action="@{/logout}" th:object="${user}">
+    <input type="submit" value="LOG OUT"/>
+</form>
 </body>
 </html>

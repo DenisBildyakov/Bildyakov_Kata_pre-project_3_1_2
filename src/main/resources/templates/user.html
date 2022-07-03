@@ -20,7 +20,7 @@
         <td><h2>Age</h2></td>
         <td><h2>Username</h2></td>
     </tr>
-    <tr th:each="user:${users}">
+    <tr>
         <td th:text="${user.getId()}">Id</td>
         <td th:text="${user.getFirstName()}">First Name</td>
         <td th:text="${user.getLastName()}">Last Name</td>
