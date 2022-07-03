@@ -41,7 +41,6 @@ public class AdminController {
     public String addUser(Model model) {
         List<Role> roles = roleService.findAllRoles();
         model.addAttribute("roles", roles);
-        model.addAttribute("newrole", new HashSet<Role>());
         model.addAttribute("user", new User());
         return "/addUser";
     }
